@@ -1,0 +1,44 @@
+.content .info .links:has(input) {
+  margin: 10px 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input.title {
+  font-weight: bolder;
+}
+
+input.status {
+  color: #f1f1f1;
+}
+
+.content .context:has(select) {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content .delete {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    background: grey;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

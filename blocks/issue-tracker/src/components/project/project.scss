@@ -1,0 +1,148 @@
+.soli-block-issue-tracker {
+  container-type: inline-size;
+}
+
+.project {
+  display: flex;
+  margin-bottom: -10%;
+
+  .empty, .item {
+    width: calc(50% - 1px);
+  }
+
+  .item {
+    display: flex;
+    margin: 50px 0;
+    position: relative;
+  }
+
+  .line {
+    position: relative;
+    width: 3px;
+    background: lightgrey;
+
+    > div {
+      display: block;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: lightgrey;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+  }
+
+  .branch {
+    position: relative;
+    min-width: 125px;
+
+    .hline {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: 2px;
+      width: 100%;
+      background: lightgrey;
+      z-index: 0;
+    }
+  }
+}
+
+@container (min-width: 1000px) {
+  .project:nth-child(even) {
+    flex-direction: row-reverse;
+
+    .item {
+      flex-direction: row-reverse;
+
+      .move.up,
+      .move.down {
+        left: initial;
+        right: 30px;
+      }
+
+      .content {
+        flex-direction: row-reverse;
+
+        .context:after {
+          right: 0;
+          left: initial;
+        }
+
+      }
+
+      .deadline {
+        left: 100%;
+
+        &:before {
+          left: -11px;
+          right: initial;
+          border-color: transparent #919191 transparent transparent;
+        }
+
+        &:after {
+          left: -11px;
+          right: initial;
+          border-color: #919191 transparent transparent transparent;
+        }
+
+        > div {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+      }
+
+      .delete {
+        left: 10px;
+        right: initial;
+      }
+    }
+  }
+}
+
+.project:not(:first-of-type) .line::after {
+  display: none;
+}
+
+.project:last-of-type {
+  margin-bottom: 10%;
+
+  .line::before {
+    content: "";
+    display: block;
+    border: 12px solid;
+    border-color: lightgrey transparent transparent transparent;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+  }
+}
+
+@container (max-width: 1000px) {
+  .project {
+    margin-bottom: initial;
+
+    .empty {
+      display: none;
+    }
+
+    .item {
+      width: initial;
+    }
+  }
+}

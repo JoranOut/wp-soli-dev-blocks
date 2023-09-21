@@ -1,0 +1,14 @@
+.color-picker-wrapper {
+  position: relative;
+
+  .color-picker {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #f1f1f1;
+    border-radius: 10px;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px -5px #000;
+  }
+}
